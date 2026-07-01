@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var urlInput: EditText
     private lateinit var collectButton: Button
+    private lateinit var clockButton: Button
     private lateinit var dataListView: ListView
     private lateinit var database: AppDatabase
     private lateinit var adapter: DataAdapter
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         // Initialize UI components
         urlInput = findViewById(R.id.urlInput)
         collectButton = findViewById(R.id.collectButton)
+        clockButton = findViewById(R.id.clockButton)
         dataListView = findViewById(R.id.dataListView)
 
         // Setup adapter
@@ -43,16 +45,22 @@ class MainActivity : AppCompatActivity() {
         // Load existing data
         loadData()
 
+        // Clock button click listener
+        clockButton.setOnClickListener {
+            val intent = android.content.Intent(this, ClockActivity::class.java)
+            startActivity(intent)
+        }
+
         // Setup button click listener
         collectButton.setOnClickListener {
             val url = urlInput.text.toString().trim()
             if (url.isEmpty()) {
-                Toast.makeText(this, "Please enter a URL or email", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "الرجاء إدخال رابط", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             collectButton.isEnabled = false
-            collectButton.text = "جارٍ..."
+            collectButton.text = "جاري..."
 
             lifecycleScope.launch {
                 try {
