@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مريم - جامع البيانات</string>
+    <string name="collect_data">جمع البيانات</string>
+    <string name="enter_url">أدخل الرابط</string>
+    <string name="loading">جارٍ التحميل...</string>
+</resources>
